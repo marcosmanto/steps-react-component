@@ -48,8 +48,14 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <Button label={'previous'} emoji={{ emoji: '⬅️' }} onClick={handlePrevious} />
-            <Button label={'next'} emoji={{ emoji: '➡️', position: 'last' }} onClick={handleNext} />
+            <Button className="previous" onClick={handlePrevious}>
+              <span>⬅️</span>
+              <span>Previous</span>
+            </Button>
+            <Button className="next" onClick={handleNext}>
+              <span>Next</span>
+              <span>➡️</span>
+            </Button>
           </div>
         </div>
       )}
@@ -57,11 +63,10 @@ function Steps() {
   )
 }
 
-function Button({ label, onClick, emoji }) {
+function Button({ className, onClick, children }) {
   return (
-    <button className={`${label} ${emoji.position === 'last' ? 'emoji-last' : ''}`.trim()} onClick={onClick}>
-      {emoji.emoji && <span>{emoji.emoji}</span>}
-      <span>{label}</span>
+    <button className={className} onClick={onClick}>
+      {children}
     </button>
   )
 }
