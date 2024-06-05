@@ -14,6 +14,10 @@ function Steps() {
   const [step, setStep] = useState(1)
   const [isOpen, setIsOpen] = useState(true)
 
+  const firtStep = step === 1
+  console.log(firtStep)
+  const lastStep = step === messages.length
+
   function handlePrevious() {
     setStep(s => Math.max(1, s - 1))
   }
@@ -48,11 +52,11 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <Button className="previous" onClick={handlePrevious}>
+            <Button className={`previous ${firtStep ? 'disabled' : ''}`.trim()} onClick={handlePrevious}>
               <span>⬅️</span>
               <span>Previous</span>
             </Button>
-            <Button className="next" onClick={handleNext}>
+            <Button className={`next ${lastStep ? 'disabled' : ''}`.trim()} onClick={handleNext}>
               <span>Next</span>
               <span>➡️</span>
             </Button>
