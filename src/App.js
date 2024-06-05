@@ -6,15 +6,13 @@ export default function App() {
   return (
     <>
       <Steps />
-      <Steps />
-      <Steps />
     </>
   )
 }
 
 function Steps() {
   const [step, setStep] = useState(1)
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   function handlePrevious() {
     setStep(s => Math.max(1, s - 1))
@@ -50,15 +48,20 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <button className="previous" onClick={handlePrevious}>
-              Previous
-            </button>
-            <button className="next" onClick={handleNext}>
-              Next
-            </button>
+            <Button label={'previous'} emoji={{ emoji: '⬅️' }} onClick={handlePrevious} />
+            <Button label={'next'} emoji={{ emoji: '➡️', position: 'last' }} onClick={handleNext} />
           </div>
         </div>
       )}
     </>
+  )
+}
+
+function Button({ label, onClick, emoji }) {
+  return (
+    <button className={`${label} ${emoji.position === 'last' ? 'emoji-last' : ''}`.trim()} onClick={onClick}>
+      {emoji.emoji && <span>{emoji.emoji}</span>}
+      <span>{label}</span>
+    </button>
   )
 }

@@ -61,10 +61,20 @@ body {
   font-weight: bold;
 
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   color: white;
   background-color: #7950f2;
+  min-width: 98px;
+}
+
+.buttons button.emoji-last {
+  flex-direction: row-reverse;
+}
+
+.buttons button span::first-letter {
+  text-transform: capitalize;
 }
 
 .buttons button span {
@@ -96,7 +106,7 @@ h3 {
 .close svg.open {
   width: 24px;
   height: 24px;
-  transform: translate(-5px, -5px);
+  transform: translate(5px, -5px);
 }
 
 .close:hover {
